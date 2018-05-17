@@ -4,6 +4,7 @@
   "description": "Simple app using OpenWeatherMap's api. Enter a city and get a 5 day forecast!",
   "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Chareesa Graham",
