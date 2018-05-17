@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>5 Day Forecast</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="outerConatiner">
+      <div class="container">
+        <img class="cloud1" src="/img/cloud1.png">
+        <img class="cloud2" src="/img/cloud2.png">
+        <fieldset>
+          <form action="/" method="post" id="cityWeatherFrom">
+            <i class="fas fa-search" onclick="submitForm()"></i>
+            <input name="city" type="text" class="cityInput" placeholder="Enter a City" required>
+            <i class="fas fa-times" onclick="clearInput()"></i>
+          </form>
+          <div class="forecast">
+            <% if(typeof forecast == 'object' && forecast){ %>
+                <% for(var i=0; i < forecast.length; i++) { %>
+                <div style="width:20%; float:left; text-align: center">
+                  <div>
+                    <%= forecast[i].date %>
+                  </div>
+                  <div>
+                    <img src="<%= forecast[i].iconUrl %>">
+                  </div>
+                  <div class="temperatureMax">
+                    <strong><%= forecast[i].max %></strong>
+                  </div>
+                  <div class="temperatureMin">
+                    <%= forecast[i].min %>
+                  </div>
+                </div>
+              <% } %>
+            <% } %>
+            <% if(typeof error == 'object' && error){ %>
+              <p><%= error %></p>
+            <% } %>
+          </fieldset>
+
+      </div>
+    </div>
+    <script>
+      function clearInput() {
+        document.getElementById("cityWeatherFrom").reset();
+      }
+      function submitForm() {
+        document.getElementById("cityWeatherFrom").submit();
+      }
+    </script>
+  </body>
+</html>
